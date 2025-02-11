@@ -1,20 +1,21 @@
 import Link from "next/link";
+import React from "react";
 
-export default function NavRaw() {
+interface NavProps{
+    logo :string,
+    children: React.ReactNode;
+}
+export default function NavRaw({logo,children} : NavProps) {
     return (
-        <nav className="flex justify-center space-x-4">
-            <Link href="/dashboard" className="font-bold rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900">
-                AI
+        <nav className="flex justify-between items-center p-5 font-bold text-2xl" >
+            <Link href="/" className="text-xl font-bold text-blue-900">
+                {logo}
             </Link>
-            <Link href="/team" className="font-bold rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900">
-                Robotics
-            </Link>
-            <Link href="/projects" className="font-bold rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900">
-                App Dev
-            </Link>
-            <Link href="/reports" className="font-bold rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900">
-                Products
-            </Link>
+            {children}
+            <div>
+
+            </div>
+          
         </nav>
     );
 }

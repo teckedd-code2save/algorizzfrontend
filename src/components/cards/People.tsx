@@ -5,7 +5,7 @@ export default function People() {
         <div className="p-4  rounded-lg shadow-sm">
             {/* Title */}
             <div className="flex items-center space-x-2">
-                <h4 className="font-semibold text-slate-900  text-lg">People</h4>
+                <h4 className="font-semibold text-slate-900  text-lg">The Team</h4>
             </div>
 
             {/* Avatars */}
@@ -36,16 +36,15 @@ export default function People() {
                     alt=""
                 />
                  <div className="mt-3">
-                <Link
-                    href="#"
-                    className="text-sm font-medium text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                >
-                    + 198 others
-                </Link>
+               
             </div>
+            
             </div>
 
             {/* Link */}
+            <Link href="#" className="text-sm font-medium text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    + 2 others
+                </Link>
            
         </div>
     );
