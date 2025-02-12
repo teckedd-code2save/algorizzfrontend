@@ -14,7 +14,7 @@ type Career = {
   updatedAt: string;
 };
 
-export default async function Careers() {
+export default async function Products() {
   // Fetch data from your NestJS backend
   const res = await fetch("http://localhost:8000/algorizz/careers");
   if (!res.ok) {
@@ -23,10 +23,10 @@ export default async function Careers() {
   const careers: Career[] = await res.json();
 
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-screen  text-white ">
       <div className="container mx-auto px-4">
         <NavRaw logo="/images/algorizzlogo.svg">
-          Careers
+          Products
         </NavRaw>
         {careers.length === 0 ? (
           <p className="text-center text-gray-300">

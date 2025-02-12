@@ -42,7 +42,7 @@ export default function People() {
             </div>
 
             {/* Link */}
-            <Link href="#" className="text-sm font-medium text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            <Link href="/team" className="text-sm font-medium text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                     + 2 others
                 </Link>
            

@@ -4,7 +4,7 @@ export default function Company() {
   return (
     <div className="h-screen w-screen flex flex-col font-[family-name:var(--font-geist-sans)]">
       {/* Fixed Navigation Bar */}
-        <NavRaw logo="Algorizz">
+        <NavRaw logo="/images/algorizzlogo.svg">
           Company
         </NavRaw>
 
