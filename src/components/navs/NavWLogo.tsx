@@ -3,10 +3,10 @@ import Image from "next/image";
 
 export default function NavWLogo() {
     return (
-        <nav className="flex justify-between items-center p-4 fixed top-0 left-0 z-50 w-full  shadow-md">
+        <nav className="flex justify-between items-center p-4 pr-2 fixed top-0 left-0 z-50 w-full  shadow-md">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-                <div className="relative w-40 h-16"> {/* Adjust width and height as needed */}
+                <div className="relative w-40 h-16 hidden"> {/* Adjust width and height as needed */}
                     <Image
                         src="/images/algorizzlogo.svg"
                         alt="Company Logo"
@@ -15,6 +15,7 @@ export default function NavWLogo() {
                         priority
                     />
                 </div>
+                <h4 className="font-bold text-3xl">Algorizz</h4>
             </Link>
 
             {/* Navigation Links */}
@@ -36,9 +37,10 @@ export default function NavWLogo() {
             {/* Join Us Button */}
             <div>
                 <Link href="/team">
-                    <h4 className="px-7 py-2 text-sm text-blue-700 font-medium border border-blue-700 rounded-full shadow-lg hover:bg-blue-700 hover:text-gray-900 transition-all cursor-pointer">
-                        Join Us
-                    </h4>
+                  <h4 
+                  className="px-8 py-3 text-sm text-blue-700 bg-white font-bold h-full rounded-sm shadow-lg hover:bg-blue-700 hover:text-white transition-all duration-400 ease-in-out cursor-pointer">
+                    Join Us
+                  </h4>
                 </Link>
             </div>
         </nav>

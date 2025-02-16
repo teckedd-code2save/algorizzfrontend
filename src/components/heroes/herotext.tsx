@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function HeroText(){
+export default function HeroText1(){
     return (
         <div className="hero flex flex-col h-screen items-center justify-center  mt-16 p-6 text-center ">
           <h1 className="text-3xl font-bold text-white">Welcome to the home of pure algorithmic Rizz</h1>
