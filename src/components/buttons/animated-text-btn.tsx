@@ -5,8 +5,8 @@ const AnimatedText = () => {
     <div className="group flex items-center justify-start gap-6 p-0 no-underline text-inherit hover:text-inherit">
       <div className="relative">
         {/* Animated Text */}
-        <h3 className="inline-block text-2xl font-bold leading-[3.5rem] tracking-[-2.88px] text-white">
-          {"Explore Algorizz".split("").map((char, index) => (
+        <h3 className="inline-block text-2xl font-medium leading-[3.5rem] tracking-[-1.88px] text-white">
+          {"explore".split("").map((char, index) => (
             <span
               key={index}
               className="inline-block opacity-0 blur-sm -translate-y-4 rotate-x-80 transition-all duration-500 group-hover:opacity-100 group-hover:blur-none group-hover:rotate-x-1 group-hover:text-gray-300 group-hover:translate-y-0.5" // Added group-hover:text-gray-400 and translate-y classes
@@ -19,10 +19,10 @@ const AnimatedText = () => {
 
         {/* Hidden Text (for accessibility and fallback) */}
         <h3
-          className="absolute top-0 left-0 inline-block text-2xl font-bold leading-[3.5rem] tracking-[-2.88px] text-white pointer-events-none transition-opacity duration-500 group-hover:opacity-0"
+          className="absolute top-0 left-0 inline-block text-2xl font-medium leading-[3.5rem] tracking-[-2.88px] text-white pointer-events-none transition-opacity duration-500 group-hover:opacity-0"
           aria-hidden="true"
         >
-          {"Explore Algorizz".split("").map((char, index) => (
+          {"explore".split("").map((char, index) => (
             <span key={index} className="inline-block opacity-100 blur-none">
               {char === " " ? "\u00A0" : char} {/* Replace space with non-breaking space */}
             </span>
@@ -31,7 +31,7 @@ const AnimatedText = () => {
       </div>
 
       {/* Arrow Icon */}
-      <div className="flex items-center justify-center transition-transform duration-500 group-hover:translate-x-2">
+      <div className="flex items-center justify-center transition-transform duration-500 group-hover:translate-x-2 rotate-45">
         <svg
           height="16"
           width="16"

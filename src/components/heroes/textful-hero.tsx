@@ -2,6 +2,9 @@
 import AnimatedText from "../buttons/animated-text-btn";
 import RotatingHeroText from "../animations/rotating-hero-text";
 import Scroll from "../scrollable/Scroll";
+import Marquee from "../animations/marquee-display";
+import Image from "next/image";
+
 
 
 export default function TextFulHeroScreen() {
@@ -10,34 +13,37 @@ export default function TextFulHeroScreen() {
         <div className="hero flex flex-col h-screen items-center justify-center p-6 text-center relative">
         {/* Grid of Images */}
           
-        {/* Dark Overlay */}
-             <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-
+        {/* Add logo using algorizz-logo.svg */}
+         <div className="relative w-2/3 h-[450px] self-center">
+         <Image src="/images/algorizz-logo.svg" fill  alt="Algorizz Logo" />
+         </div>
+        
         {/* Content */}
-            <div className="relative z-10 text-center flex flex-col gap-y-16 justify-between">
+            <div className="relative  text-center flex flex-col gap-y-16 justify-between">
                 <div>
-                    <div className="flex flex-row justfy-start items-center  gap-5 ">
-                        <h1 className="text-5xl font-bold text-white whitespace-nowrap flex-none">Powering the future</h1>
-                        <span className="grow"> 
-                            <RotatingHeroText>
-                            </RotatingHeroText></span>
-                    </div>
+                <div className="flex flex-row justify-start items-center gap-5">
+                {/* <h1 className="text-4xl font-bold flex-none bg-gradient-to-r from-[#5754AD] to-white bg-clip-text text-transparent">
+                    Powering Futures
+                </h1> */}
+                <span className="grow"> 
+                    <RotatingHeroText className="text-4xl" messages={["DevOps Solutions", "Custom AI Solutions", "Business Software Solutions"]}>
+                    </RotatingHeroText>
+                </span>
+                </div>
                     
-                    <blockquote className="text-lg text-gray-300 mt-4 italic border-white pl-3">
-                    "Building the next big tech in style"
-                    </blockquote>
                   
                 </div>
                 
                 <div className="flex justify-center mt-5">
-                    <Scroll
-                    targetId="ai"
-                    className="px-4 border border-gray-700  rounded-md shadow-lg font-bold "
-                    >
-                    <AnimatedText />
-                    </Scroll>
+                <Scroll
+                targetId="ai"
+                className="px-6 py-2 rounded-xl shadow-lg font-bold bg-inherit opacity-75"
+                >
+                <AnimatedText />
+                </Scroll>
                 </div>
             </div>
+
         </div>
     );
 }

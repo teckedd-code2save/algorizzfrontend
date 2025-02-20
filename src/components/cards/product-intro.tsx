@@ -7,14 +7,15 @@ import TextBtn from "../buttons/text-btn-icon";
 interface ProductIntroProps {
   title: string;
   image: string;
+  className: string;
   body: string;
 }
 
-export default function ProductIntro({ title, image,body }: ProductIntroProps) {
+export default function ProductIntro({ title, image,body,className }: ProductIntroProps) {
   return (
-       <div className="flex flex-row gap-4 w-80 h-40 rounded-lg shadow-lg drop-shadow-xl p-1">
+       <div className={`flex flex-col gap-4  p-1 ${className}`}>
       {/* Image */}
-      <div className="relative w-32 h-32 self-center rounded-lg overflow-hidden">
+      <div className="relative w-full h-80 self-center rounded-sm overflow-hidden">
         <Image
           src={image}
           alt="Product Image"
@@ -25,9 +26,9 @@ export default function ProductIntro({ title, image,body }: ProductIntroProps) {
       </div>
       {/* Text */}
       <div className="flex flex-col justify-center w-full gap-2">
-        <h2 className="font-bold text-gray-500">{title}</h2>
+        <h2 className="font-bold text-white">{title}</h2>
         <h3 className="font-thin text-gray-300 text-sm">{body}</h3>
-        <TextBtn></TextBtn>
+        <TextBtn title="Read More" ></TextBtn>
       </div>
     </div>
   );
