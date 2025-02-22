@@ -8,7 +8,7 @@ interface BtnProps {
 
 const TextBtn = ({title="Join Us"}:BtnProps) => {
   return (
-    <div className="group flex items-center justify-start gap-6 p-0  transition-all">
+    <div className="group flex items-center justify-end self-end gap-6 p-0  transition-all">
       
         <h3 className="inline-block text-sm font-medium  text-white hover:text-[#5754AD] transition-all">
           {title}
