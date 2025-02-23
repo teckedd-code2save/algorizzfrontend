@@ -1,8 +1,8 @@
 "use client"
 import RotatingHeroText from "@/components/animations/rotating-hero-text";
-import Contact from "@/components/cards/Contact";
+import Contact from "@/components/cards/contact-card";
 import MultiComponentCard from "@/components/cards/multi-component-card";
-import People from "@/components/cards/People";
+import People from "@/components/cards/people-card";
 import ProductIntro from "@/components/cards/product-intro-card";
 import TextFulHeroScreen from "@/components/heroes/textful-hero";
 import NavWLogo from "@/components/navs/NavWLogo";
