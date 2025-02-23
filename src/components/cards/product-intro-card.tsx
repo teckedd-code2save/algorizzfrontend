@@ -11,9 +11,10 @@ interface ProductIntroProps {
   image: string;
   className: string;
   body: string;
+  iconStyle?: string;
 }
 
-export default function ProductIntro({ title, image,body,className }: ProductIntroProps) {
+export default function ProductIntro({ title, image,body,className,iconStyle }: ProductIntroProps) {
 
   useEffect(() => {
     // ✅ You can read or write refs in effects
@@ -76,7 +77,7 @@ export default function ProductIntro({ title, image,body,className }: ProductInt
           <div className="card_body flex flex-col justify-center w-full gap-2">
             <div className="flex flex-row justify-between w-full gap-2">
               <h2 className="font-bold text-white">{title}</h2>
-              <TextBtn title="Read More" ></TextBtn>
+              <TextBtn title="Read More" className={iconStyle} ></TextBtn>
             </div>
             
 

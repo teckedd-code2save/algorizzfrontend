@@ -1,4 +1,8 @@
+import ProductCard from "@/components/cards/product-card";
 import NavRaw from "@/components/navs/NavRaw";
+import NavWLogo from "@/components/navs/NavWLogo";
+import ArrowIcon from "@/components/svgs/arrow-icon-svg";
+import BigHeader from "@/components/texts/big-header-text";
 import Link from "next/link";
 
 type Product = {
@@ -29,55 +33,63 @@ export default async function Products() {
     throw new Error("Failed to fetch products");
   }
   const products: Product[] = await res.json();
+  console.log(products)
 
   return (
-    <div className="min-h-screen  text-white ">
-      <div className="container mx-auto px-4">
-        <NavRaw logo="/images/algorizzlogo.svg">
-          Products
-        </NavRaw>
-        {products.length === 0 ? (
-          <p className="text-center text-gray-300">
-            No product opportunities available at the moment.
-          </p>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((product) => (
-              <div
-                key={product.id}
-                className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <h2 className="text-2xl font-bold text-blue-400 mb-2">
-                  {product.title}
-                </h2>
-                <p className="text-gray-300 mb-2">
-                  <strong>Description:</strong> {product.description}
+    <div className="h-screen  w-screen text-white ">
+        
+        {(() => {                    
+                    const leading = (
+                      <div className="flex flex-row gap-5  items-center">
+                        <Link href="/" className="rotate-180">
+                          <ArrowIcon></ArrowIcon>
+                        </Link>
+                        <BigHeader text="Products"></BigHeader>
+
+                      </div>
+                    );
+
+                  return <NavWLogo leading={leading}>
+                   <div className="flex space-x-4 mx-auto font-medium text-gray-100">
+                      <Link href="/company" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                          I.Commerce
+                      </Link>
+                      <Link href="/careers" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                          Fintech
+                      </Link>
+                      <Link href="/products" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                          E.Health
+                      </Link>
+                      <Link href="/solutions" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                          Management
+                      </Link>
+                      <Link href="/solutions" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                          Art
+                      </Link>
+                    </div>
+                  </NavWLogo>
+                })()
+          
+             }
+              {
+              products.length === 0 ? (
+                <p className="text-center text-gray-300">
+                  No product opportunities available at the moment.
                 </p>
-                <p className="text-gray-300 mb-2">
-                  <strong>Link:</strong> {product.url}
-                </p>
-                <p className="text-gray-300 mb-2">
-                  <strong>Created Date:</strong>{" "}
-                  {new Date(product.createdAt).toLocaleDateString()}
-                </p>
-                {product.updatedAt && (
-                  <p className="text-gray-300 mb-2">
-                    <strong>Updated Date:</strong>{" "}
-                    {new Date(product.updatedAt).toLocaleDateString()}
-                  </p>
-                )}
-                <p className="text-gray-300">{product.description}</p>
-                <Link
-                  href={`/products/${product.id}`} // Link to a detailed product page
-                  className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
-                >
-                  Apply Now
-                </Link>
+              ) : 
+              (
+              <div className="w-full h-full grid grid-cols-1 md:grid-cols-2  gap-5 justify-around mt-20 p-5">
+                {            
+                products.map((product) => (
+                  <div key={product.id} className="w-full">
+                    <ProductCard product={product} iconStyle="bg-[#5754AD] rounded-full p-3" className="justify-start border border-[0.8px] border-[#2D2D2D] rounded-md bg-gradient-to-r  from-[#5754AD] to-white from-[#5754AD]">
+
+                    </ProductCard>
+
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        )}
+              )}
       </div>
-    </div>
   );
 }

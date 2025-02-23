@@ -3,7 +3,7 @@ import RotatingHeroText from "@/components/animations/rotating-hero-text";
 import Contact from "@/components/cards/Contact";
 import MultiComponentCard from "@/components/cards/multi-component-card";
 import People from "@/components/cards/People";
-import ProductIntro from "@/components/cards/product-intro";
+import ProductIntro from "@/components/cards/product-intro-card";
 import TextFulHeroScreen from "@/components/heroes/textful-hero";
 import NavWLogo from "@/components/navs/NavWLogo";
 import Tags from "@/components/tags/connected-tags";
@@ -16,11 +16,35 @@ export default function Home() {
 
 
   return (
-    <div className="h-screen w-screen flex flex-col font-[family-name:var(--font-geist-sans)]">
-      {/* Fixed Navigation Bar */}
-        <NavWLogo />
+    <div className="h-screen w-screen flex flex-col font-[family-name:var(--font-geist-sans)]">      
+        {(() => {                    
+                    const leading = (
+                      <Link href="/" className="flex items-center">
+                        <Image src="/images/algorizz-logo.svg" className="object-cover" width={200} height={200} alt="Algorizz Logo" />
+                      </Link>
+                    );
+
+                  return <NavWLogo leading={leading}>
+                   <div className="flex space-x-4 mx-auto font-medium text-gray-100">
+                      <Link href="/company" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                          Company
+                      </Link>
+                      <Link href="/careers" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                          Careers
+                      </Link>
+                      <Link href="/products" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                          Products
+                      </Link>
+                      <Link href="/solutions" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                          Solutions
+                      </Link>
+                    </div>
+                  </NavWLogo>
+                })()
+          
+          }
+        
       
-      {/* Main Content */}
       <main className="flex flex-col flex-1">
         {/* <HeroBgImage>
 
@@ -48,9 +72,9 @@ export default function Home() {
                   
               </div>
 
-              <div className="featured_section h-full flex flex-row overflow-x-auto gap-4 w-2/3 justify-start bg-gradient-to-r  from-[#5754AD] to-white to-[#5754AD] rounded-lg p-2 mr-3" >
-                <ProductIntro className="w-1/2 " title={"Eloquigent"} image={"/images/robot-arm.jpg"} body={"Custom ASMR models built to understand your business language"} />
-                <ProductIntro className="w-1/2 " title={"Natal Chat"} image={"/images/robot-arm.jpg"} body={"Get personalised care and attention throughout the perioud of your pregnancy"} />
+              <div className="featured_section h-full flex flex-row overflow-x-auto gap-4 w-2/3 justify-start bg-gradient-to-r  from-[#5754AD] to-white from-[#5754AD] rounded-md p-2 mr-3" >
+                <ProductIntro iconStyle="text-[#5754AD]" className="w-1/2 " title={"Eloquigent"} image={"/images/robot-arm.jpg"} body={"Custom ASMR models built to understand your business language"} />
+                <ProductIntro iconStyle="text-[#5754AD]" className="w-1/2 " title={"Natal Chat"} image={"/images/robot-arm.jpg"} body={"Get personalised care and attention throughout the perioud of your pregnancy"} />
                 
               </div>
             
