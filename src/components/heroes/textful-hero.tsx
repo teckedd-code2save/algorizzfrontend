@@ -4,6 +4,7 @@ import RotatingHeroText from "../animations/rotating-hero-text";
 import Scroll from "../scrollable/Scroll";
 import Marquee from "../animations/marquee-display";
 import Image from "next/image";
+import AlgorizzLogo from "../svgs/algorizz-logo";
 
 
 
@@ -14,8 +15,9 @@ export default function TextFulHeroScreen() {
         {/* Grid of Images */}
           
         {/* Add logo using algorizz-logo.svg */}
-         <div className="relative w-2/3 h-[450px] self-center">
-         <Image src="/images/algorizz-logo.svg" fill  alt="Algorizz Logo" />
+         <div className="relative w-2/3 self-center">
+         <AlgorizzLogo></AlgorizzLogo>
+         {/* <Image src="/images/algorizz-logo.svg" fill  alt="Algorizz Logo" /> */}
          </div>
         
         {/* Content */}

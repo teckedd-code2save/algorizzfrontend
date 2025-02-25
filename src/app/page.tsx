@@ -6,14 +6,18 @@ import People from "@/components/cards/people-card";
 import ProductIntro from "@/components/cards/product-intro-card";
 import TextFulHeroScreen from "@/components/heroes/textful-hero";
 import NavWLogo from "@/components/navs/NavWLogo";
+import HorizontalScroll from "@/components/sections/horizontal-scroll-section";
 import Tags from "@/components/tags/connected-tags";
 import BigHeader from "@/components/texts/big-header-text";
 import Image from "next/image";
 
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
 
+  const scrollParentRef = useRef<HTMLDivElement>(null);
+   
 
   return (
     <div className="h-screen w-screen flex flex-col font-[family-name:var(--font-geist-sans)]">      
@@ -80,7 +84,10 @@ export default function Home() {
             
             </div>
             
-            <div className="h-1/2 w-2/3 h-full self-start overflow-x-scroll overflow-y-hidden flex flex-row m-2 mt-4 border border-[0.8px] border-[#2D2D2D] rounded-md">
+            
+            <div ref={scrollParentRef}
+             id="scroll_parent" className=" h-1/2 w-2/3 h-full self-start overflow-x-scroll overflow-y-hidden flex flex-row m-2 mt-4 border border-[0.8px] border-[#2D2D2D] rounded-md">
+            
                 <div className="h-full w-full self-end min-w-full">
                   {(() => {
                     const bodyText = "Keeping track of your inventory has never been easier. Our solution helps you keep track of your inventory in real time.";
@@ -92,6 +99,7 @@ export default function Home() {
                         className=""
                         body={bodyText}
                         dir="row"
+                        parentRef={scrollParentRef}
                       />
                       
                     );
@@ -109,12 +117,34 @@ export default function Home() {
                         className=""
                         body={bodyText}
                         dir="row"
+                        parentRef={scrollParentRef}
                       />
                       
                     );
                 })()}
                 
                 </div>
+                <div className="h-full w-full self-end min-w-full">
+                  {(() => {
+                    const bodyText = "Our solution to building Text to Speech and Speech to Text models that understand your business language.";
+                    
+                    return (
+                      <MultiComponentCard
+                        title="Lingua Flow"
+                        image="/images/robot-arm.jpg"
+                        className=""
+                        body={bodyText}
+                        dir="row"
+                        parentRef={scrollParentRef}
+                      />
+                      
+                    );
+                })()}
+                
+                </div>
+                
+
+                
             </div>
             
         </div>
