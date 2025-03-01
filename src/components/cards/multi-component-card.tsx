@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import TextBtn from "../buttons/text-btn-icon"; 
-import BigHeader from "../texts/big-header-text"; 
+import TextBtn from "../buttons/text-btn-icon";
+import BigHeader from "../texts/big-header-text";
 
 interface MultiComponentCardProps {
   title: string;
@@ -10,7 +10,7 @@ interface MultiComponentCardProps {
   className: string;
   body: string;
   dir: "row" | "col";
-  parentRef: React.RefObject<HTMLDivElement | null>; 
+  parentRef: React.RefObject<HTMLDivElement | null>;
 }
 
 export default function MultiComponentCard({
@@ -19,85 +19,108 @@ export default function MultiComponentCard({
   body,
   className,
   dir,
-  parentRef, 
+  parentRef,
 }: MultiComponentCardProps) {
-  // State for zoom and translation
   const [zoom, setZoom] = useState(1);
   const [trans, setTrans] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+
   const ZOOM_SPEED = 0.003;
-  const TRANS_SPEED = 0.009;
+  const TRANS_SPEED = 0.01;
 
-  // Ref for the card container to attach event listener and get card width
   const cardRef = useRef<HTMLDivElement>(null);
-
-  // Ref to store the previous trans value
   const prevTransRef = useRef(trans);
 
   // Wheel event handler effect
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      // Prevent default scroll behavior (optional, adjust based on requirements)
+      if (isScrolling) return; // Allow normal scrolling when true
+
       e.preventDefault();
 
       // Update zoom state
       setZoom((prevZoom) => {
-        let newZoom = e.deltaY > 0 ? prevZoom + ZOOM_SPEED/2 : prevZoom - ZOOM_SPEED;
-        newZoom = Math.max(1, Math.min(newZoom, 2.5)); // Clamp zoom between 1 and 2.5
+        let newZoom = e.deltaY > 0 ? prevZoom + ZOOM_SPEED / 2 : prevZoom - ZOOM_SPEED;
+        newZoom = Math.max(1, Math.min(newZoom, 2));
         return newZoom;
       });
 
       // Update translation state
       setTrans((prevTrans) => {
-        let newTrans = e.deltaY > 0 ? prevTrans + TRANS_SPEED : prevTrans - TRANS_SPEED * 2.5;
-        newTrans = Math.max(0.2, Math.min(newTrans, 4)); // Clamp translation between 0.2 and 3
+        let newTrans = e.deltaY > 0 ? prevTrans + TRANS_SPEED * 1.5 : prevTrans - TRANS_SPEED * 2.5;
+        newTrans = Math.max(0.2, Math.min(newTrans, 3.8));
         return newTrans;
       });
+
+      if (parentRef.current) {
+        const scrollLeft = parentRef.current.scrollLeft;
+        const maxScroll = parentRef.current.scrollWidth - parentRef.current.clientWidth;
+
+        // Switch to normal scrolling only at bounds
+        if (e.deltaY < 0 && trans <= 0.2 && scrollLeft <= 0) {
+          setIsScrolling(true);
+          console.log("Switching to normal scrolling (start of cards)");
+        } else if (e.deltaY > 0 && trans >= 3.8 && scrollLeft >= maxScroll - 1) {
+          setIsScrolling(true);
+          console.log("Switching to normal scrolling (end of cards)");
+        }
+      }
     };
 
-    // Attach wheel event listener to the container
+    const handleFocus = () => {
+      setIsScrolling(false); // Disable normal scrolling when card is focused
+      console.log("Card focused, disabling normal scrolling");
+    };
+
     const currentCard = cardRef.current;
+
     if (currentCard) {
       currentCard.addEventListener("wheel", handleWheel, { passive: false });
+      currentCard.addEventListener("mouseenter", handleFocus);
+      // Make the card focusable
+      currentCard.tabIndex = 0; // Add tabIndex to make it focusable
     }
 
-    // Cleanup: Remove event listener on unmount
     return () => {
       if (currentCard) {
         currentCard.removeEventListener("wheel", handleWheel);
+        currentCard.removeEventListener("focus", handleFocus);
       }
     };
-  }, []);
+  }, [isScrolling, parentRef, trans]); // Include dependencies to update listener
 
   // Effect to scroll to the next card when trans reaches maximum
   useEffect(() => {
-    // Check if trans has crossed from below 3 to 3 or above
-    if (
-      prevTransRef.current < 4 &&
-      trans >= 4 &&
-      parentRef.current &&
-      cardRef.current
-    ) {
-      const cardWidth = cardRef.current.clientWidth;
+    if (!parentRef.current || !cardRef.current) return;
+
+    const cardWidth = cardRef.current.clientWidth;
+
+    // Scroll to next card
+    if (prevTransRef.current < 3.8 && trans >= 3.8) {
       parentRef.current.scrollBy({
         left: cardWidth,
         behavior: "smooth",
       });
     }
-    else if (
-      prevTransRef.current > 0.2 &&
-      trans <= 0.2 &&
-      parentRef.current &&
-      cardRef.current
-    ) {
-      const cardWidth = cardRef.current.clientWidth;
-      parentRef.current.scrollBy({
-        left: -cardWidth,
-        behavior: "smooth",
-      });
+    // Scroll to previous card or page up if at start
+    else if (prevTransRef.current > 0.2 && trans <= 0.2) {
+      if (parentRef.current.scrollLeft > 0) {
+        parentRef.current.scrollBy({
+          left: -cardWidth,
+          behavior: "smooth",
+        });
+      } else {
+        const cardHeight = cardRef.current.clientHeight;
+        parentRef.current.parentElement!.scrollBy({
+          top: -cardHeight,
+          behavior: "smooth",
+        });
+        setIsScrolling(true); // Enable normal scrolling only when scrolling up at start
+      }
     }
-    // Update prevTransRef for the next render
+
     prevTransRef.current = trans;
-  }, [trans, parentRef, cardRef]);
+  }, [trans, parentRef]);
 
   return (
     <div
@@ -106,21 +129,17 @@ export default function MultiComponentCard({
         dir === "row" ? "flex-row" : "flex-col"
       }`}
     >
-      {/* Image */}
-      <div
-        className="relative big_card_img w-1/2 h-full ml-2"
-        style={{ transform: `scale(${zoom})`, transformOrigin: "center" }}
-      >
+      <div className="relative big_card_img w-1/2 h-full ml-2 overflow-hidden">
         <Image
           src={image}
           alt="Product Image"
           fill
+          style={{ transform: `scale(${zoom})`, transformOrigin: "center" }}
           className="object-cover"
-          priority // Preload image since it's above the fold
+          priority
         />
       </div>
 
-      {/* Text Content */}
       <div className="flex flex-col w-1/2 justify-end">
         <div
           className="flex flex-col p-2 justify-end w-full gap-2"

@@ -1,11 +1,12 @@
 
 interface TextProps{
-    text:string
+    text:string,
+    className?:string
 }
-export default function BigHeader ({text}:TextProps){
+export default function BigHeader ({text,className=""}:TextProps){
 
     return (
-        <h1 className="text-4xl font-medium text-white">{text}</h1>
+        <h1 className={`  ${className == ""?"text-4xl font-medium text-white":className}`}>{text}</h1>
     );
 
 }

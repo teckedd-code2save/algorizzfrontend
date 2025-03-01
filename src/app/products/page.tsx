@@ -1,6 +1,7 @@
-import ProductCard from "@/components/cards/product-card";
-import NavRaw from "@/components/navs/NavRaw";
-import NavWLogo from "@/components/navs/NavWLogo";
+import TextBtn from "@/components/buttons/text-btn-icon";
+import ProductCardTextOverlay from "@/components/cards/product-card-textoverlay";
+import NavRaw from "@/components/navs/nav-raw";
+import NavMain from "@/components/navs/nav-main";
 import ArrowIcon from "@/components/svgs/arrow-icon-svg";
 import BigHeader from "@/components/texts/big-header-text";
 import Link from "next/link";
@@ -40,34 +41,36 @@ export default async function Products() {
         
         {(() => {                    
                     const leading = (
-                      <div className="flex flex-row gap-5  items-center">
-                        <Link href="/" className="rotate-180">
-                          <ArrowIcon></ArrowIcon>
-                        </Link>
-                        <BigHeader text="Products"></BigHeader>
-
-                      </div>
+                      <Link href="/">
+                        <BigHeader text="Serendepify" className="font-extrabold"></BigHeader>
+                      </Link>
+                      
                     );
 
-                  return <NavWLogo leading={leading}>
-                   <div className="flex space-x-4 mx-auto font-medium text-gray-100">
-                      <Link href="/company" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
-                          I.Commerce
-                      </Link>
-                      <Link href="/careers" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
-                          Fintech
-                      </Link>
-                      <Link href="/products" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
-                          E.Health
-                      </Link>
-                      <Link href="/solutions" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
-                          Management
-                      </Link>
-                      <Link href="/solutions" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
-                          Art
-                      </Link>
+                    const subnav = (
+                      <div className="flex space-x-4 mx-auto font-medium text-gray-100">
+                        <Link href="/company" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                            Lingua Flow
+                        </Link>
+                        <Link href="/careers" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                            Inventory Vision
+                        </Link>
+                        <Link href="/products" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                            eHealth
+                        </Link>
+                        <Link href="/solutions" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                            Education
+                        </Link>
+                        <Link href="/solutions" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                            Finance
+                        </Link>
                     </div>
-                  </NavWLogo>
+                    );
+
+                  return <NavMain leading={leading} trailing={(<></>)} subnav={subnav}>
+                    <BigHeader text="Products" className="text-5xl font-bold"></BigHeader>
+              
+                  </NavMain>
                 })()
           
              }
@@ -78,18 +81,23 @@ export default async function Products() {
                 </p>
               ) : 
               (
-              <div className="w-full h-full grid grid-cols-1 md:grid-cols-2  gap-5 justify-around mt-20 p-5">
+              <div className="w-full h-full grid grid-cols-1 md:grid-cols-2  gap-5 justify-around  pt-[50px] px-[130px] overflow-y-auto">
                 {            
                 products.map((product) => (
                   <div key={product.id} className="w-full">
-                    <ProductCard product={product} iconStyle="bg-[#5754AD] rounded-full p-3" className="justify-start border border-[0.8px] border-[#2D2D2D] rounded-md bg-gradient-to-r  from-[#5754AD] to-white from-[#5754AD]">
+                    <ProductCardTextOverlay product={product} iconStyle="bg-[#5754AD] rounded-full p-3" className="justify-start border border-[0.8px] border-[#2D2D2D] rounded-md bg-gradient-to-r  from-[#5754AD] to-white from-[#5754AD]">
 
-                    </ProductCard>
+                    </ProductCardTextOverlay>
 
                   </div>
                 ))}
               </div>
               )}
+              <footer className="w-full flex flex-row pt-6 gap-8 items-start justify-center h-20 min-h-[120px]">
+                <div className="flex flex-col">
+                  <TextBtn title="Careers" className="" />
+                </div>
+               </footer>
       </div>
   );
 }

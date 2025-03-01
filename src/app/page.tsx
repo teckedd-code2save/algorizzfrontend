@@ -5,9 +5,7 @@ import MultiComponentCard from "@/components/cards/multi-component-card";
 import People from "@/components/cards/people-card";
 import ProductIntro from "@/components/cards/product-intro-card";
 import TextFulHeroScreen from "@/components/heroes/textful-hero";
-import NavWLogo from "@/components/navs/NavWLogo";
-import HorizontalScroll from "@/components/sections/horizontal-scroll-section";
-import Tags from "@/components/tags/connected-tags";
+import NavMain from "@/components/navs/nav-main";
 import BigHeader from "@/components/texts/big-header-text";
 import Image from "next/image";
 
@@ -17,18 +15,20 @@ import { useEffect, useRef } from "react";
 export default function Home() {
 
   const scrollParentRef = useRef<HTMLDivElement>(null);
-   
+  const scrollParentRef1 = useRef<HTMLDivElement>(null);
 
+   
   return (
     <div className="h-screen w-screen flex flex-col font-[family-name:var(--font-geist-sans)]">      
         {(() => {                    
                     const leading = (
-                      <Link href="/" className="flex items-center">
-                        <Image src="/images/algorizz-logo.svg" className="object-cover" width={200} height={200} alt="Algorizz Logo" />
+                      <Link href="/">
+                        <BigHeader text="Serendepify" className="font-extrabold"></BigHeader>
                       </Link>
+                      
                     );
 
-                  return <NavWLogo leading={leading}>
+                  return <NavMain leading={leading}>
                    <div className="flex space-x-4 mx-auto font-medium text-gray-100">
                       <Link href="/company" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
                           Company
@@ -39,11 +39,11 @@ export default function Home() {
                       <Link href="/products" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
                           Products
                       </Link>
-                      <Link href="/solutions" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
-                          Solutions
+                      <Link href="/contact" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                          Partner
                       </Link>
                     </div>
-                  </NavWLogo>
+                  </NavMain>
                 })()
           
           }
@@ -136,23 +136,20 @@ export default function Home() {
                         body={bodyText}
                         dir="row"
                         parentRef={scrollParentRef}
+                        
                       />
                       
                     );
                 })()}
                 
-                </div>
-                
-
-                
+                </div> 
             </div>
             
         </div>
-
-          
+  
 
         <div className="flex flex-row h-screen  relative bg-gradient-to-t from-[#1E1E1E] to-[#2D2D2D]">
-           <div className="w-2/3 p-2">
+           <div ref={scrollParentRef1} className="w-2/3 p-2">
               <div className="h-full w-full self-end min-w-full">
                   {(() => {
                     const bodyText = "We work with major cloud platforms including GCP, Azure, and AWS. Let us help you build and scale your business online.";
@@ -164,6 +161,7 @@ export default function Home() {
                         className=""
                         body={bodyText}
                         dir="row"
+                        parentRef={scrollParentRef1}
                       />
                       
                     );
@@ -197,20 +195,29 @@ export default function Home() {
       </main>
       
       {/* Footer */}
-      <footer className="w-full flex flex-row pt-6 flex gap-8 items-start justify-center h-[300px]">
-       
-        <People />
-       
-        <Contact email="createdliving1000@gmail.com" phone="+1234567890" />
-        
-        <div className="flex flex-col">
-          <h4 className=" text-lg font-bold  ">
-            Company
-          </h4>
-          <Link className="mt-2  font-medium text-blue-500 " href="https://nextjs.org/learn" target="_blank" rel="noopener noreferrer">
-            Vision
-          </Link>
+      <footer className="w-full grid grid-cols-2 gap-8 items-start justify-center h-50 min-h-60">
+        <div className="flex flex-col justify-between p-5 items-start h-full w-1/4 p-5">
+          <BigHeader text="Serendepify" className="font-extrabold"></BigHeader>
+            <p className="text-center text-gray-500 text-xs">
+              &copy;2025 Serendepify Inc
+            </p>
         </div>
+        <div className="w-full h-full flex flex-row p-4 flex gap-8 items-start justify-between">
+            <People />
+          
+          <Contact email="createdliving1000@gmail.com" phone="+1234567890" />
+          
+          <div className="flex flex-col">
+            <h4 className=" text-lg font-bold  ">
+              Company
+            </h4>
+            <Link className="mt-2  font-medium text-blue-500 " href="https://nextjs.org/learn" target="_blank" rel="noopener noreferrer">
+              Vision
+            </Link>
+          </div>
+        </div>
+       
+      
        
       </footer>
     </div>

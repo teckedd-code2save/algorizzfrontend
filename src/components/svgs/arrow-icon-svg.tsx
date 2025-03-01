@@ -1,7 +1,13 @@
 
-export default function ArrowIcon (){
+interface ArrowIconProps {
+
+    className?:string
+    
+  }
+
+export default function ArrowIcon ({className}:ArrowIconProps) {
     return (
-        <div className="flex items-center justify-center transition-transform duration-500 group-hover:translate-x-2">
+        <div className={`flex items-center justify-center transition-transform duration-500 group-hover:translate-x-2 ${className}`}>
             <svg
             height="16"
             width="16"

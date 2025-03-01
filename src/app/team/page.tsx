@@ -1,4 +1,4 @@
-import NavRaw from "@/components/navs/NavRaw";
+import NavRaw from "@/components/navs/nav-raw";
 import Link from "next/link";
 
 type User = {

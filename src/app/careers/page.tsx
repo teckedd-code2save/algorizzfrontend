@@ -1,4 +1,9 @@
-import NavRaw from "@/components/navs/NavRaw";
+import TextBtn from "@/components/buttons/text-btn-icon";
+import CareerCard from "@/components/cards/career-card";
+import NavRaw from "@/components/navs/nav-raw";
+import NavMain from "@/components/navs/nav-main";
+import ArrowIcon from "@/components/svgs/arrow-icon-svg";
+import BigHeader from "@/components/texts/big-header-text";
 import Link from "next/link";
 
 type Career = {
@@ -23,53 +28,68 @@ export default async function Careers() {
   const careers: Career[] = await res.json();
 
   return (
-    <div className="min-h-screen text-white">
-      <div className="container mx-auto px-4">
-        <NavRaw logo="/images/algorizzlogo.svg">
-          Careers
-        </NavRaw>
-        {careers.length === 0 ? (
-          <p className="text-center text-gray-300">
-            No career opportunities available at the moment.
-          </p>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {careers.map((career) => (
-              <div
-                key={career.id}
-                className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <h2 className="text-2xl font-bold text-blue-400 mb-2">
-                  {career.title}
-                </h2>
-                <p className="text-gray-300 mb-2">
-                  <strong>Company:</strong> {career.company}
+    <div className="h-screen  w-screen text-white ">
+        
+        {(() => {                    
+                   const leading = (
+                    <Link href="/">
+                      <BigHeader text="Serendepify" className="font-extrabold"></BigHeader>
+                    </Link>
+                    
+                  );
+
+                    const subnav = (
+                      <div className="flex space-x-4 mx-auto font-medium text-gray-100">
+                        <Link href="/company" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                            Engineering
+                        </Link>
+                        <Link href="/careers" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                            Devops
+                        </Link>
+                        <Link href="/products" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                            Mlops
+                        </Link>
+                        <Link href="/solutions" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                            Product Management
+                        </Link>
+                        <Link href="/solutions" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                            UI/UX
+                        </Link>
+                    </div>
+                    );
+
+                  return  <NavMain leading={leading} trailing={(<></>)} subnav={subnav}>
+                            <BigHeader text="Careers" className="text-5xl font-bold"></BigHeader>
+                  
+                          </NavMain>
+                })()
+          
+             }
+              {
+              careers.length === 0 ? (
+                <p className="text-center text-gray-300">
+                  No career opportunities available at the moment.
                 </p>
-                <p className="text-gray-300 mb-2">
-                  <strong>Location:</strong> {career.location}
-                </p>
-                <p className="text-gray-300 mb-2">
-                  <strong>Start Date:</strong>{" "}
-                  {new Date(career.startDate).toLocaleDateString()}
-                </p>
-                {career.endDate && (
-                  <p className="text-gray-300 mb-2">
-                    <strong>End Date:</strong>{" "}
-                    {new Date(career.endDate).toLocaleDateString()}
-                  </p>
-                )}
-                <p className="text-gray-300">{career.description}</p>
-                <Link
-                  href={`/careers/${career.id}`} // Link to a detailed career page
-                  className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
-                >
-                  Apply Now
-                </Link>
+              ) : 
+              (
+              <div className="w-full h-full flex flex-col gap-5 justify-start pt-[50px] px-[150px] overflow-y-auto">
+                {            
+                careers.map((career) => (
+                  <div key={career.id} className="w-full">
+                    <CareerCard career={career} iconStyle="bg-[#5754AD] rounded-full p-3" className="justify-start border border-[0.8px] border-[#2D2D2D] rounded-md bg-gradient-to-r  from-[#5754AD] to-white from-[#5754AD]">
+
+                    </CareerCard>
+
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        )}
+              )}
+
+        <footer className="w-full flex flex-row pt-6 gap-8 items-start justify-center h-20 min-h-[120px]">
+                <div className="flex flex-col">
+                  <TextBtn title="Careers" className="" />
+                </div>
+        </footer>
       </div>
-    </div>
   );
 }
