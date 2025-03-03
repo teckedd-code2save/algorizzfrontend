@@ -1,4 +1,5 @@
 import TextBtn from "@/components/buttons/text-btn-icon";
+import SimpleError from "@/components/errors/simple-error-page";
 import NavMain from "@/components/navs/nav-main";
 import BigHeader from "@/components/texts/big-header-text";
 import Link from "next/link";
@@ -37,7 +38,7 @@ function PersonCard({ person, className = "", iconStyle = "" }: { person: Person
       <p className="text-sm text-gray-500 mt-2">
         {person.career && person.career.length > 0
           ? `Contributing expertise in ${person.career[0].title}.`
-          : "A key contributor to Algoriz’s mission."}
+          : "A key contributor to Serendepify’s mission."}
       </p>
     </div>
   );
@@ -50,7 +51,7 @@ export default async function Company() {
     cache: "no-store", // Ensures fresh data; adjust as needed
   });
   if (!res.ok) {
-    throw new Error("Failed to fetch team members");
+    return <SimpleError page="Company"></SimpleError>;
   }
   const people: Person[] = await res.json();
 
@@ -77,7 +78,7 @@ export default async function Company() {
         <div className="intro flex flex-col h-auto min-h-[500px] p-2">
           <BigHeader text="Our Essence" className="" />
           <p className="text-lg text-gray-500">
-            At Algoriz, we are architects of innovation, seamlessly blending MLOps and DevOps
+            At Serendepify, we are architects of innovation, seamlessly blending MLOps and DevOps
             solutions to empower a sustainable future. With expertise in software development,
             computer vision, and text-to-speech technologies, we craft intelligent systems that
             redefine possibility. Our mission is to democratize access to cutting-edge tools
@@ -88,7 +89,7 @@ export default async function Company() {
         <div className="how flex flex-col h-auto min-h-[500px] p-2">
           <BigHeader text="How We Began" className="" />
           <p className="text-lg text-gray-500">
-            Algoriz was born from a spark of zeal—a relentless drive to harness technology for
+            Serendepify was born from a spark of zeal—a relentless drive to harness technology for
             good. What began as a vision among pioneers has grown into a force for progress,
             rooted in the belief that innovation should serve both humanity and the planet.
           </p>
@@ -98,7 +99,7 @@ export default async function Company() {
           <BigHeader text="Why We Exist" className="" />
           <p className="text-lg text-gray-500">
             In a world accelerating toward technological frontiers, we refuse to stand still.
-            Algoriz exists to bridge gaps, break barriers, and deliver solutions that empower
+            Serendepify exists to bridge gaps, break barriers, and deliver solutions that empower
             all—ensuring no one is left behind in the rush of progress.
           </p>
         </div>
@@ -106,7 +107,7 @@ export default async function Company() {
         <div className="where flex flex-col h-auto min-h-[500px] p-2">
           <BigHeader text="Where We’re Headed" className="" />
           <p className="text-lg text-gray-500">
-            Our journey is just beginning. Algoriz is poised to lead the vanguard of AI and
+            Our journey is just beginning. Serendepify is poised to lead the vanguard of AI and
             software engineering, crafting systems that power a sustainable tomorrow while
             inspiring global impact. We are here to stay, and our sights are set on the horizon.
           </p>
@@ -117,7 +118,7 @@ export default async function Company() {
           <BigHeader text="Our Visionaries" className="" />
           {people.length === 0 ? (
             <p className="text-lg text-gray-500">
-              Our team is growing—stay tuned to meet the brilliant minds shaping Algoriz.
+              Our team is growing—stay tuned to meet the brilliant minds shaping Serendepify.
             </p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">

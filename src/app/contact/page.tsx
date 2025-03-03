@@ -1,4 +1,5 @@
 "use client"
+import PartnersMarquee from "@/components/animations/marquee-display";
 import NavMain from "@/components/navs/nav-main";
 import ArrowIcon from "@/components/svgs/arrow-icon-svg";
 import BigHeader from "@/components/texts/big-header-text";
@@ -97,18 +98,31 @@ const leading = (
         <BigHeader text="Partners" className="text-5xl font-bold" />
       </NavMain>
 
+
       <div className="w-full h-full flex flex-col gap-5 justify-center items-center mt-[50px] p-10">
+                  
+          <div className="text-lg text-gray-500 intro flex flex-row overflow-wrap h-auto w-3/5 p-2 gap-3">
+            <span>
+            <BigHeader text="Serendepify" className="font bold text-4xl font-extrabold text-white" />
+            </span>
+            <span>
+            partners with Companies, Organizations and Individuals who are like-minded. This synergy between us makes us even more powerful 
+            </span>
+          </div>
+         
+          <PartnersMarquee className="w-[500px]"></PartnersMarquee>
+          <hr></hr>
         {!isPartnerForm && (
           <div className="flex gap-4 mb-6">
             <button 
               onClick={() => setIsSignIn(true)}
-              className={`text-2xl font-thin ${isSignIn ? 'text-white' : 'text-gray-500'}`}
+              className={`text-xl font-thin ${isSignIn ? 'text-white' : 'text-gray-500'}`}
             >
              Sign in <ArrowIcon className=""></ArrowIcon>
             </button>
             <button 
               onClick={() => setIsSignIn(false)}
-              className={`text-2xl font-thin ${!isSignIn ? 'text-white' : 'text-gray-500'}`}
+              className={`text-xl font-thin ${!isSignIn ? 'text-white' : 'text-gray-500'}`}
             >
               <ArrowIcon className="rotate-180"></ArrowIcon> Sign Up
             </button>

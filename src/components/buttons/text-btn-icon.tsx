@@ -9,7 +9,7 @@ interface BtnProps {
 
 const TextBtn = ({title="Join Us",className}:BtnProps) => {
   return (
-    <div className={`group flex items-center justify-end self-end gap-3 p-1 rounded-lg  transition-all ${className}`}>
+    <button className={`group flex items-center justify-end self-end gap-3 p-1 rounded-lg  transition-all ${className}`}>
       
         <h3 className="inline-block text-sm font-medium ">
           {title}
@@ -17,7 +17,7 @@ const TextBtn = ({title="Join Us",className}:BtnProps) => {
 
       {/* Arrow Icon */}
       <ArrowIcon></ArrowIcon>
-    </div>
+    </button>
   );
 };
 

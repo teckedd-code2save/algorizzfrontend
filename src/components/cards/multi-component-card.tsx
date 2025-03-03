@@ -152,7 +152,7 @@ export default function MultiComponentCard({
         </div>
 
         <div className="flex flex-col justify-end w-full gap-2 p-2">
-          <hr />
+          <hr className="text-red-500"/>
           <TextBtn title="Get Started" />
         </div>
       </div>

@@ -2,7 +2,7 @@
 import AnimatedText from "../buttons/animated-text-btn";
 import RotatingHeroText from "../animations/rotating-hero-text";
 import Scroll from "../scrollable/Scroll";
-import Marquee from "../animations/marquee-display";
+import PartnersMarquee from "../animations/marquee-display";
 import Image from "next/image";
 import AlgorizzLogo from "../svgs/algorizz-logo";
 

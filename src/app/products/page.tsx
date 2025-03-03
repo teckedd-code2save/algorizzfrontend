@@ -5,6 +5,7 @@ import NavMain from "@/components/navs/nav-main";
 import ArrowIcon from "@/components/svgs/arrow-icon-svg";
 import BigHeader from "@/components/texts/big-header-text";
 import Link from "next/link";
+import SimpleError from "@/components/errors/simple-error-page";
 
 type Product = {
   id: string;
@@ -31,7 +32,8 @@ export default async function Products() {
   // Fetch data from your NestJS backend
   const res = await fetch("http://localhost:8000/algorizz/products");
   if (!res.ok) {
-    throw new Error("Failed to fetch products");
+
+    return <SimpleError page="Products"></SimpleError>;
   }
   const products: Product[] = await res.json();
   console.log(products)
@@ -49,19 +51,19 @@ export default async function Products() {
 
                     const subnav = (
                       <div className="flex space-x-4 mx-auto font-medium text-gray-100">
-                        <Link href="/company" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                        <Link href="/company" className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300 transition-all">
                             Lingua Flow
                         </Link>
-                        <Link href="/careers" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                        <Link href="/careers" className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300 transition-all">
                             Inventory Vision
                         </Link>
-                        <Link href="/products" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                        <Link href="/products" className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300 transition-all">
                             eHealth
                         </Link>
-                        <Link href="/solutions" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                        <Link href="/solutions" className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300 transition-all">
                             Education
                         </Link>
-                        <Link href="/solutions" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                        <Link href="/solutions" className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300 transition-all">
                             Finance
                         </Link>
                     </div>

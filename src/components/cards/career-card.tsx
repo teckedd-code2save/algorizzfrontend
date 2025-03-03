@@ -33,15 +33,8 @@ export default function CareerCard({ career,className,iconStyle }: CareerCardPro
             {/* Text */}
             <div className="card_body flex flex-col justify-center w-full gap-2 p-2">
                 <div className="flex flex-row justify-between w-full gap-2">
-                  <BigHeader text={career.title}></BigHeader>                  {(() => {
-                                      
-                        if (career.userId != "") {
-                          return (
-                            <TextBtn title="Apply" className={iconStyle}></TextBtn>
-                          );
-                        }
-                                        
-                    })()}
+                  <BigHeader text={career.title}></BigHeader>                                 
+                  <TextBtn title="Apply" className={iconStyle}></TextBtn>               
                 </div>
                 <hr></hr>
                 <div className="flex flex-row justify-between w-full gap-2">

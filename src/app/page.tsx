@@ -86,7 +86,7 @@ export default function Home() {
             
             
             <div ref={scrollParentRef}
-             id="scroll_parent" className=" h-1/2 w-2/3 h-full self-start overflow-x-scroll overflow-y-hidden flex flex-row m-2 mt-4 border border-[0.8px] border-[#2D2D2D] rounded-md">
+             id="scroll_parent" className=" h-1/2 w-3/4 h-full self-start overflow-x-scroll overflow-y-hidden flex flex-row m-2 mt-4 border border-[0.8px] border-[#2D2D2D] rounded-md">
             
                 <div className="h-full w-full self-end min-w-full">
                   {(() => {
@@ -198,8 +198,8 @@ export default function Home() {
       <footer className="w-full grid grid-cols-2 gap-8 items-start justify-center h-50 min-h-60">
         <div className="flex flex-col justify-between p-5 items-start h-full w-1/4 p-5">
           <BigHeader text="Serendepify" className="font-extrabold"></BigHeader>
-            <p className="text-center text-gray-500 text-xs">
-              &copy;2025 Serendepify Inc
+            <p className="w-full text-center text-gray-500 text-sm">
+              Copyright &copy;2025 Serendepify Inc
             </p>
         </div>
         <div className="w-full h-full flex flex-row p-4 flex gap-8 items-start justify-between">
