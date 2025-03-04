@@ -26,7 +26,7 @@ export default function MultiComponentCard({
   const [isScrolling, setIsScrolling] = useState(false);
 
   const ZOOM_SPEED = 0.003;
-  const TRANS_SPEED = 0.01;
+  const TRANS_SPEED = 0.02;
 
   const cardRef = useRef<HTMLDivElement>(null);
   const prevTransRef = useRef(trans);
@@ -97,6 +97,15 @@ export default function MultiComponentCard({
 
     // Scroll to next card
     if (prevTransRef.current < 3.8 && trans >= 3.8) {
+
+      if (dir==="col") {
+        const cardHeight = cardRef.current.clientHeight;
+        parentRef.current.scrollBy({
+          top: cardHeight,
+          behavior: "smooth",
+        });
+      }
+
       parentRef.current.scrollBy({
         left: cardWidth,
         behavior: "smooth",
@@ -105,10 +114,19 @@ export default function MultiComponentCard({
     // Scroll to previous card or page up if at start
     else if (prevTransRef.current > 0.2 && trans <= 0.2) {
       if (parentRef.current.scrollLeft > 0) {
+
+        if (dir==="col") {
+          const cardHeight = cardRef.current.clientHeight;
+          parentRef.current.scrollBy({
+            top: -cardHeight,
+            behavior: "smooth",
+          });
+        }
         parentRef.current.scrollBy({
           left: -cardWidth,
           behavior: "smooth",
         });
+
       } else {
         const cardHeight = cardRef.current.clientHeight;
         parentRef.current.parentElement!.scrollBy({
@@ -126,7 +144,7 @@ export default function MultiComponentCard({
     <div
       ref={cardRef}
       className={`multi_card_component flex gap-4 p-2 h-full w-full justify-between border border-[0.4px] border-[#2D2D2D] rounded-md ${className} ${
-        dir === "row" ? "flex-row" : "flex-col"
+         "flex-row" 
       }`}
     >
       <div className="relative big_card_img w-1/2 h-full ml-2 overflow-hidden">

@@ -27,7 +27,7 @@ async function fetchCareers() {
 }
 
 export default async function Careers() {
-  
+
   // Fetch data from your NestJS backend
   const res = await fetchCareers();
   if (res === null) {
@@ -39,12 +39,7 @@ export default async function Careers() {
     <div className="h-screen  w-screen text-white ">
         
         {(() => {                    
-                   const leading = (
-                    <Link href="/">
-                      <BigHeader text="Serendepify" className="font-extrabold"></BigHeader>
-                    </Link>
-                    
-                  );
+                
 
                     const subnav = (
                       <div className="flex space-x-4 mx-auto font-medium text-gray-100">
@@ -66,7 +61,7 @@ export default async function Careers() {
                     </div>
                     );
 
-                  return  <NavMain leading={leading} trailing={(<></>)} subnav={subnav}>
+                  return  <NavMain trailing={(<></>)} subnav={subnav}>
                             <BigHeader text="Careers" className="text-5xl font-bold"></BigHeader>
                   
                           </NavMain>

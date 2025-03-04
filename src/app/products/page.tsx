@@ -42,35 +42,31 @@ export default async function Products() {
     <div className="h-screen  w-screen text-white ">
         
         {(() => {                    
-                    const leading = (
-                      <Link href="/">
-                        <BigHeader text="Serendepify" className="font-extrabold"></BigHeader>
-                      </Link>
-                      
-                    );
+                   
 
                     const subnav = (
                       <div className="flex space-x-4 mx-auto font-medium text-gray-100">
-                        <Link href="/company" className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300 transition-all">
+                        <Link href="/company" className="px-3 py-1 hover:text-sm  hover:rounded-full hover:border-[0.4px]  transition-all">
                             Lingua Flow
                         </Link>
-                        <Link href="/careers" className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300 transition-all">
+                        <Link href="/careers" className="px-3 py-1 hover:text-sm  hover:rounded-full hover:border-[0.4px]  transition-all">
                             Inventory Vision
                         </Link>
-                        <Link href="/products" className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300 transition-all">
+                        <Link href="/products" className="px-3 py-1 hover:text-sm  hover:rounded-full hover:border-[0.4px]  transition-all">
                             eHealth
                         </Link>
-                        <Link href="/solutions" className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300 transition-all">
+                        <Link href="/solutions" className="px-3 py-1 hover:text-sm  hover:rounded-full hover:border-[0.4px]  transition-all">
                             Education
                         </Link>
-                        <Link href="/solutions" className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300 transition-all">
+                        <Link href="/solutions" className="px-3 py-1 hover:text-sm  hover:rounded-full hover:border-[0.4px]  transition-all">
                             Finance
                         </Link>
                     </div>
                     );
 
-                  return <NavMain leading={leading} trailing={(<></>)} subnav={subnav}>
-                    <BigHeader text="Products" className="text-5xl font-bold"></BigHeader>
+                  return <NavMain trailing={(<></>)} subnav={subnav}>
+                    <></>
+                    {/* <BigHeader text="Products" className="text-5xl font-bold"></BigHeader> */}
               
                   </NavMain>
                 })()

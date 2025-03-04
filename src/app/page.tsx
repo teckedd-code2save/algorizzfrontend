@@ -1,13 +1,11 @@
 "use client"
 import RotatingHeroText from "@/components/animations/rotating-hero-text";
-import Contact from "@/components/cards/contact-card";
 import MultiComponentCard from "@/components/cards/multi-component-card";
-import People from "@/components/cards/people-card";
 import ProductIntro from "@/components/cards/product-intro-card";
 import TextFulHeroScreen from "@/components/heroes/textful-hero";
 import NavMain from "@/components/navs/nav-main";
 import BigHeader from "@/components/texts/big-header-text";
-import Image from "next/image";
+import { VscAccount } from "react-icons/vsc";
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
@@ -16,31 +14,37 @@ export default function Home() {
 
   const scrollParentRef = useRef<HTMLDivElement>(null);
   const scrollParentRef1 = useRef<HTMLDivElement>(null);
-
    
   return (
     <div className="h-screen w-screen flex flex-col font-[family-name:var(--font-geist-sans)]">      
         {(() => {                    
                     const leading = (
                       <Link href="/">
-                        <BigHeader text="Serendepify" className="font-extrabold"></BigHeader>
+                        <BigHeader text="Serendepify" className="text-2xl font-extrabold"></BigHeader>
                       </Link>
                       
                     );
 
-                  return <NavMain leading={leading}>
-                   <div className="flex space-x-4 mx-auto font-medium text-gray-100">
-                      <Link href="/company" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
-                          Company
+                    const trailing = (
+                      <Link className="" href="/contact">
+                        <VscAccount className="text-2xl"></VscAccount>
                       </Link>
-                      <Link href="/careers" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
-                          Careers
+                      
+                    );
+
+                  return <NavMain leading={leading} trailing={trailing}>
+                   <div className="flex space-x-4 mx-auto font-medium text-gray-100 text-sm">
+                      <Link href="#ai" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                          Intelligence
+                      </Link>
+                      <Link href="#cloud" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                          Cloud Assist
+                      </Link>
+                      <Link href="#cloud" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                          Develop
                       </Link>
                       <Link href="/products" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
-                          Products
-                      </Link>
-                      <Link href="/contact" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
-                          Partner
+                          Explore
                       </Link>
                     </div>
                   </NavMain>
@@ -86,7 +90,7 @@ export default function Home() {
             
             
             <div ref={scrollParentRef}
-             id="scroll_parent" className=" h-1/2 w-3/4 h-full self-start overflow-x-scroll overflow-y-hidden flex flex-row m-2 mt-4 border border-[0.8px] border-[#2D2D2D] rounded-md">
+             id="scroll_parent" className=" w-3/4 h-full self-start overflow-x-scroll overflow-y-hidden flex flex-row m-2 mt-4 border border-[0.8px] border-[#2D2D2D] rounded-md">
             
                 <div className="h-full w-full self-end min-w-full">
                   {(() => {
@@ -148,9 +152,9 @@ export default function Home() {
         </div>
   
 
-        <div className="flex flex-row h-screen  relative bg-gradient-to-t from-[#1E1E1E] to-[#2D2D2D]">
-           <div ref={scrollParentRef1} className="w-2/3 p-2">
-              <div className="h-full w-full self-end min-w-full">
+        <div id="cloud" className="flex flex-row h-screen  relative bg-gradient-to-t from-[#1E1E1E] to-[#2D2D2D]">
+           <div  id="scroll_parent1" ref={scrollParentRef1} className="w-2/3 h-full p-2 overflow-y-scroll flex flex-col">
+              <div className="h-full w-full self-end min-h-full">
                   {(() => {
                     const bodyText = "We work with major cloud platforms including GCP, Azure, and AWS. Let us help you build and scale your business online.";
                     
@@ -160,7 +164,25 @@ export default function Home() {
                         image="/images/robot-arm.jpg"
                         className=""
                         body={bodyText}
-                        dir="row"
+                        dir="col"
+                        parentRef={scrollParentRef1}
+                      />
+                      
+                    );
+                })()}
+                 </div>
+                 <div className="h-full w-full self-end min-h-full">
+
+                {(() => {
+                    const bodyText = "Whatever the dream, we can help you build it. Our team of experts are ready to help you build and scale your business online.";
+                    
+                    return (
+                      <MultiComponentCard
+                        title="Develop"
+                        image="/images/robot-arm.jpg"
+                        className=""
+                        body={bodyText}
+                        dir="col"
                         parentRef={scrollParentRef1}
                       />
                       
@@ -195,24 +217,51 @@ export default function Home() {
       </main>
       
       {/* Footer */}
-      <footer className="w-full grid grid-cols-2 gap-8 items-start justify-center h-50 min-h-60">
-        <div className="flex flex-col justify-between p-5 items-start h-full w-1/4 p-5">
+      <footer className="w-full grid grid-cols-3  items-start justify-center  min-h-60 pt-4">
+        <div className="flex flex-col justify-around p-5 items-start h-full col-span-1 p-5">
           <BigHeader text="Serendepify" className="font-extrabold"></BigHeader>
-            <p className="w-full text-center text-gray-500 text-sm">
-              Copyright &copy;2025 Serendepify Inc
+            <p className="w-full  text-gray-500 text-sm">
+              Copyright &copy;2025 Serendepify Inc.
             </p>
         </div>
-        <div className="w-full h-full flex flex-row p-4 flex gap-8 items-start justify-between">
-            <People />
-          
-          <Contact email="createdliving1000@gmail.com" phone="+1234567890" />
+        <div className="col-span-2 h-full flex flex-row p-4 pr-6 flex gap-8 items-start justify-around">
+        <div className="flex flex-col">
+            <h4 className=" text-lg font-bold  ">
+              Resources
+            </h4>
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href="https://nextjs.org/learn" target="_blank" rel="noopener noreferrer">
+              Book A Demo
+            </Link>
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href="https://nextjs.org/learn" target="_blank" rel="noopener noreferrer">
+              Success Stories
+            </Link>
+            
+          </div>
+          <div className="flex flex-col">
+            <h4 className=" text-lg font-bold  ">
+              Solutions
+            </h4>
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href="https://nextjs.org/learn" target="_blank" rel="noopener noreferrer">
+             Saas Platform
+            </Link>
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href="https://nextjs.org/learn" target="_blank" rel="noopener noreferrer">
+              Inventory Vision
+            </Link>
+            
+          </div>
           
           <div className="flex flex-col">
             <h4 className=" text-lg font-bold  ">
               Company
             </h4>
-            <Link className="mt-2  font-medium text-blue-500 " href="https://nextjs.org/learn" target="_blank" rel="noopener noreferrer">
-              Vision
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href="/company" target="_blank" rel="noopener noreferrer">
+              About
+            </Link>
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href="/careers" target="_blank" rel="noopener noreferrer">
+              Careers
+            </Link>
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href="/company" target="_blank" rel="noopener noreferrer">
+              Investors
             </Link>
           </div>
         </div>

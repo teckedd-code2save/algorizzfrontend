@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import TextBtn from "../buttons/text-btn-icon";
+import BigHeader from "../texts/big-header-text";
 
 interface NavBarProps{
     children: React.ReactNode;
@@ -14,7 +15,12 @@ export default function NavMain({children,leading,trailing,subnav}:NavBarProps) 
         <nav className="flex flex-col justify-start gap-8 items-center p-4  top-0 left-0 w-full h-auto">
             <div className="flex flex-row justify-between items-center w-full">
                 <div>
-                {leading}
+               {leading ??   (
+                      <Link href="/">
+                        <BigHeader text="Serendepify" className="text-2xl font-extrabold"></BigHeader>
+                      </Link>
+                      
+                    )}
                 </div>
                 
 
