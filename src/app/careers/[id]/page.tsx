@@ -2,10 +2,13 @@ import NavMain from "@/components/navs/nav-main";
 import BigHeader from "@/components/texts/big-header-text";
 import Link from "next/link";
 
+type Params = Promise<{ id: string }>;
+
 // Define the props type explicitly for clarity
-export default async function CareerPage({ params }: { params: { id: string } }) {
+export default async function CareerPage({ params }: { params: Params }) {
   // Fetch career details based on the ID
-  const career = await fetchCareerById(params.id);
+  const { id } = await params; 
+  const career = await fetchCareerById(id);
 
   if (!career) {
     return <div>Career not found</div>;
