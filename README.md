@@ -1,4 +1,4 @@
-# algorizzfrontend
+# Serendepify-frontend
 Algorizz frontend is frontend project of the algorizz company website project
 
 ## Tools
