@@ -16,6 +16,17 @@ interface ProductCardProps {
       createdAt: string;
       updatedAt: string;
     };
+    
+    enum Domain {
+      Tech,
+      Ecommerce,
+      EHealth,
+      Finance,
+      AI,
+      Management,
+      Art,
+      Education
+    }
 
     export default function ProductCardTextOverlay({ product, className = "", iconStyle = "" }: ProductCardProps) {
         return (
