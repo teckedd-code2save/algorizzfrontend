@@ -35,9 +35,7 @@ const eslintConfig = [
       "prefer-const": "warn",              // Suggest const, but don’t fail
       "react-hooks/exhaustive-deps": "warn", // Warn about missing dependencies
       "@next/next/no-img-element": "off",   // Disable img element check
-    },
-    // Prevent ESLint from failing the build during Next.js compilation
-    ignoreDuringBuilds: true,
+    }
   },
 ];
 
