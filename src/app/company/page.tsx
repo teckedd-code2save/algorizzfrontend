@@ -3,6 +3,8 @@ import SimpleError from "@/components/errors/simple-error-page";
 import NavMain from "@/components/navs/nav-main";
 import BigHeader from "@/components/texts/big-header-text";
 import Link from "next/link";
+import { routes } from "@/lib/routes";
+
 
 // Define the Person type based on your User entity
 type Person = {
@@ -61,7 +63,7 @@ export default async function Company() {
 
       {(() => {  
       const leading = (
-                      <Link href="/">
+                      <Link href={routes.home}>
                         <BigHeader text="Serendepify" className="font-extrabold"></BigHeader>
                       </Link>
                       

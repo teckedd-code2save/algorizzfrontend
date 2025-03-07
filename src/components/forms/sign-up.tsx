@@ -1,6 +1,6 @@
 import { useState } from "react";
 import BigHeader from "../texts/big-header-text";
-import { VscArrowSmallLeft } from "react-icons/vsc";
+import { VscArrowLeft } from "react-icons/vsc";
 
 
 
@@ -36,9 +36,9 @@ export default function SignUp() {
                   placeholder="******************" 
                 />
               </div>
-              <div className="grid grid-cols-6 gap-4">
-                <button  className="col-span-1" onClick={() => setStep(0)}>
-                <VscArrowSmallLeft className="text-[#5754AD] text-2xl"/>
+              <div className="grid grid-cols-6 gap-3">
+                <button  className="col-span-1  px-4 rounded bg-white" onClick={() => setStep(0)}>
+                <VscArrowLeft className="text-[#5754AD] text-2xl"/>
                 </button>
 
                 <button  className="col-span-5 w-full bg-[#5754AD]  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
@@ -78,6 +78,17 @@ export default function SignUp() {
                 />
               </div>
               <div className="mb-4">
+                <label className="block font-bold text-gray-300 text-sm mb-2" htmlFor="org-name">
+                  User Name
+                </label>
+                <input 
+                  className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-800 text-white" 
+                  id="org-name" 
+                  type="text" 
+                  placeholder="Your Business/Org Name" 
+                />
+              </div>
+              <div className="mb-4">
                 <label className="block font-bold text-gray-300 text-sm mb-2" htmlFor="website">
                   Website
                 </label>
@@ -88,7 +99,18 @@ export default function SignUp() {
                   placeholder="https://example.com" 
                 />
               </div>
-              <button onClick={() => setStep(1)} className="w-full bg-[#5754AD]  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+              <div className="mb-4">
+                <label className="block font-bold text-gray-300 text-sm mb-2" htmlFor="website">
+                  Socials
+                </label>
+                <input 
+                  className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-800 text-white" 
+                  id="website" 
+                  type="url" 
+                  placeholder="https://example.com" 
+                />
+              </div>
+              <button onClick={() => setStep(1)} aria-disabled={true} disabled={true} className="w-full bg-[#5754AD]  text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline" type="button">
                 Next
               </button>
             </form>)}

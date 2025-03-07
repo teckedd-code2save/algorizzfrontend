@@ -6,6 +6,7 @@ import TextFulHeroScreen from "@/components/heroes/textful-hero";
 import NavMain from "@/components/navs/nav-main";
 import BigHeader from "@/components/texts/big-header-text";
 import { VscAccount } from "react-icons/vsc";
+import { routes } from "@/lib/routes";
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
@@ -19,7 +20,7 @@ export default function Home() {
     <div className="h-screen w-screen flex flex-col font-[family-name:var(--font-geist-sans)]">      
         {(() => {                    
                     const leading = (
-                      <Link href="/">
+                      <Link href={routes.home}>
                         <BigHeader text="Serendepify" className="text-2xl font-extrabold"></BigHeader>
                       </Link>
                       
@@ -43,7 +44,7 @@ export default function Home() {
                       <Link href="#cloud" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
                           Develop
                       </Link>
-                      <Link href="/products" className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
+                      <Link href={routes.products} className="px-3 py-2 hover:font-bold hover:text-[#5754AD] transition-all">
                           Explore
                       </Link>
                     </div>
@@ -80,7 +81,7 @@ export default function Home() {
                   
               </div>
 
-              <div className="featured_section h-full flex flex-row overflow-x-auto gap-4 w-2/3 justify-start bg-gradient-to-r  from-[#5754AD] to-white from-[#5754AD] rounded-md p-2 mr-3" >
+              <div className="featured_section h-full flex flex-row overflow-x-auto gap-4 w-2/3 justify-start from-[#5754AD] rounded-md p-2 mr-3" >
                 <ProductIntro iconStyle="text-[#5754AD]" className="w-1/2 " title={"Eloquigent"} image={"/images/robot-arm.jpg"} body={"Custom ASMR models built to understand your business language"} />
                 <ProductIntro iconStyle="text-[#5754AD]" className="w-1/2 " title={"Natal Chat"} image={"/images/robot-arm.jpg"} body={"Get personalised care and attention throughout the perioud of your pregnancy"} />
                 
@@ -229,11 +230,14 @@ export default function Home() {
             <h4 className=" text-lg font-bold  ">
               Resources
             </h4>
-            <Link className="mt-2  font-medium text-gray-500 text-sm " href="https://nextjs.org/learn" target="_blank" rel="noopener noreferrer">
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href={routes.company} target="_blank" rel="noopener noreferrer">
               Book A Demo
             </Link>
-            <Link className="mt-2  font-medium text-gray-500 text-sm " href="https://nextjs.org/learn" target="_blank" rel="noopener noreferrer">
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href={routes.company} target="_blank" rel="noopener noreferrer">
               Success Stories
+            </Link>
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href={routes.company} target="_blank" rel="noopener noreferrer">
+              Blog
             </Link>
             
           </div>
@@ -241,11 +245,14 @@ export default function Home() {
             <h4 className=" text-lg font-bold  ">
               Solutions
             </h4>
-            <Link className="mt-2  font-medium text-gray-500 text-sm " href="https://nextjs.org/learn" target="_blank" rel="noopener noreferrer">
-             Saas Platform
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href={routes.company} target="_blank" rel="noopener noreferrer">
+             Ultra Saas
             </Link>
-            <Link className="mt-2  font-medium text-gray-500 text-sm " href="https://nextjs.org/learn" target="_blank" rel="noopener noreferrer">
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href={routes.company} target="_blank" rel="noopener noreferrer">
               Inventory Vision
+            </Link>
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href={routes.company} target="_blank" rel="noopener noreferrer">
+              Agri Connect
             </Link>
             
           </div>
@@ -254,13 +261,13 @@ export default function Home() {
             <h4 className=" text-lg font-bold  ">
               Company
             </h4>
-            <Link className="mt-2  font-medium text-gray-500 text-sm " href="/company" target="_blank" rel="noopener noreferrer">
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href={routes.company} target="_blank" rel="noopener noreferrer">
               About
             </Link>
-            <Link className="mt-2  font-medium text-gray-500 text-sm " href="/careers" target="_blank" rel="noopener noreferrer">
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href={routes.careers} target="_blank" rel="noopener noreferrer">
               Careers
             </Link>
-            <Link className="mt-2  font-medium text-gray-500 text-sm " href="/company" target="_blank" rel="noopener noreferrer">
+            <Link className="mt-2  font-medium text-gray-500 text-sm " href={routes.company} target="_blank" rel="noopener noreferrer">
               Investors
             </Link>
           </div>

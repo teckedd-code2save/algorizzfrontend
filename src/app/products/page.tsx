@@ -1,11 +1,10 @@
 import TextBtn from "@/components/buttons/text-btn-icon";
 import ProductCardTextOverlay from "@/components/cards/product-card-textoverlay";
-import NavRaw from "@/components/navs/nav-raw";
 import NavMain from "@/components/navs/nav-main";
-import ArrowIcon from "@/components/svgs/arrow-icon-svg";
-import BigHeader from "@/components/texts/big-header-text";
 import Link from "next/link";
 import SimpleError from "@/components/errors/simple-error-page";
+import { routes } from "@/lib/routes";
+
 
 type Product = {
   id: string;
@@ -46,19 +45,19 @@ export default async function Products() {
 
                     const subnav = (
                       <div className="flex space-x-4 mx-auto font-medium text-gray-100">
-                        <Link href="/company" className="px-3 py-1 hover:text-sm  hover:rounded-full hover:border-[0.4px]  transition-all">
+                        <Link href={routes.products} className="px-3 py-1 hover:text-sm  hover:rounded-full hover:border-[0.4px]  transition-all">
                             Lingua Flow
                         </Link>
-                        <Link href="/careers" className="px-3 py-1 hover:text-sm  hover:rounded-full hover:border-[0.4px]  transition-all">
+                        <Link href={routes.products} className="px-3 py-1 hover:text-sm  hover:rounded-full hover:border-[0.4px]  transition-all">
                             Inventory Vision
                         </Link>
-                        <Link href="/products" className="px-3 py-1 hover:text-sm  hover:rounded-full hover:border-[0.4px]  transition-all">
+                        <Link href={routes.products}className="px-3 py-1 hover:text-sm  hover:rounded-full hover:border-[0.4px]  transition-all">
                             eHealth
                         </Link>
-                        <Link href="/solutions" className="px-3 py-1 hover:text-sm  hover:rounded-full hover:border-[0.4px]  transition-all">
+                        <Link href={routes.products} className="px-3 py-1 hover:text-sm  hover:rounded-full hover:border-[0.4px]  transition-all">
                             Education
                         </Link>
-                        <Link href="/solutions" className="px-3 py-1 hover:text-sm  hover:rounded-full hover:border-[0.4px]  transition-all">
+                        <Link href={routes.products} className="px-3 py-1 hover:text-sm  hover:rounded-full hover:border-[0.4px]  transition-all">
                             Finance
                         </Link>
                     </div>

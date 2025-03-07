@@ -1,7 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
-import TextBtn from "../buttons/text-btn-icon";
 import BigHeader from "../texts/big-header-text";
+import { routes } from "@/lib/routes";
 
 interface NavBarProps{
     children: React.ReactNode;
@@ -16,7 +15,7 @@ export default function NavMain({children,leading,trailing,subnav}:NavBarProps) 
             <div className="flex flex-row justify-between items-center w-full">
                 <div>
                {leading ??   (
-                      <Link href="/">
+                      <Link href={routes.home}>
                         <BigHeader text="Serendepify" className="text-2xl font-extrabold"></BigHeader>
                       </Link>
                       
@@ -34,8 +33,7 @@ export default function NavMain({children,leading,trailing,subnav}:NavBarProps) 
             </div>  
             {/* if subnav is passed, render it */}
             {subnav && (
-                <div className="flex flex-row justify-between items-center w-auto p-1 rounded-full border border-[0.3px] border-gray-500">
-                    <hr></hr>
+                <div className="flex flex-row justify-between items-center w-auto p-1 rounded-full border border-[0.3px] border-gray-500 hover:border-none">
                     {subnav}
                 </div>
             )}

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Algorizz",
-  description: "The Algorithmic Rizzing Company",
+  title: "Serendepify",
+  description: "Discover and uncover magical moments in your life.",
 };
 
 export default function RootLayout({

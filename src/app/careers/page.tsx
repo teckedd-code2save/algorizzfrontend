@@ -1,11 +1,11 @@
 import TextBtn from "@/components/buttons/text-btn-icon";
 import CareerCard from "@/components/cards/career-card";
-import NavRaw from "@/components/navs/nav-raw";
 import NavMain from "@/components/navs/nav-main";
-import ArrowIcon from "@/components/svgs/arrow-icon-svg";
 import BigHeader from "@/components/texts/big-header-text";
 import Link from "next/link";
 import SimpleError from "@/components/errors/simple-error-page";
+import { routes } from "@/lib/routes";
+
 
 type Career = {
   id: string;
@@ -43,19 +43,19 @@ export default async function Careers() {
 
                     const subnav = (
                       <div className="flex space-x-4 mx-auto font-medium text-gray-100">
-                        <Link href="/company" className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300  transition-all">
+                        <Link href={routes.careers} className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300  transition-all">
                             Engineering
                         </Link>
-                        <Link href="/careers" className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300  transition-all">
+                        <Link href={routes.careers} className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300  transition-all">
                             Devops
                         </Link>
-                        <Link href="/products" className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300  transition-all">
+                        <Link href={routes.careers} className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300  transition-all">
                             Mlops
                         </Link>
-                        <Link href="/solutions" className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300  transition-all">
+                        <Link href={routes.careers}className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300  transition-all">
                             Product Management
                         </Link>
-                        <Link href="/solutions" className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300  transition-all">
+                        <Link href={routes.careers} className="px-3 py-1 hover:font-bold hover:rounded-full hover:text-[#5754AD] hover:bg-gray-300  transition-all">
                             UI/UX
                         </Link>
                     </div>
@@ -78,7 +78,7 @@ export default async function Careers() {
               <div className="w-full h-full flex flex-col gap-5 justify-start pt-[50px] px-[150px] overflow-y-auto">
                 {            
                 careers.map((career) => (
-                  <Link href={`/careers/${career.id}`} key={career.id}>
+                  <Link href={`${routes.careers}/${career.id}`} key={career.id}>
                     <div key={career.id} className="w-full">
                     <CareerCard career={career} iconStyle="bg-[#5754AD] rounded-full p-3" className="justify-start border border-[0.8px] border-[#2D2D2D] rounded-md bg-gradient-to-r  from-[#5754AD] to-white from-[#5754AD]">
 

@@ -4,25 +4,13 @@ import SignIn from "@/components/forms/sign-in";
 import SignUp from "@/components/forms/sign-up";
 import NavMain from "@/components/navs/nav-main";
 import BigHeader from "@/components/texts/big-header-text";
-import Link from "next/link";
 import { useState } from "react";
 import { FaGoogle,FaKey } from "react-icons/fa";
 import { Suspense } from 'react';
 
 export default function Contact() {
   const [isSignIn, setIsSignIn] = useState(true); // true for Sign In, false for Sign Up
-  const [isPartnerForm, setIsPartnerForm] = useState(false); // Shows after successful signup
   const [isSignupComplete, setIsSignupComplete] = useState(false); // Tracks signup completion
-
-
-
-const leading = (
-  <Link href="/">
-    <BigHeader text="Serendepify" className="font-extrabold"></BigHeader>
-  </Link>
-  
-);
-
 
 
   return (
@@ -64,8 +52,8 @@ const leading = (
                 </button>
               </div>
             </>
-            <button onClick={() => setIsSignIn(false)} className="w-full mt-5  text-white font-bold py-2 px-4 rounded border border-[0.5px]" type="button">
-                  Create Account
+            <button onClick={() => setIsSignIn(!isSignIn)} className="w-full mt-5  text-white font-bold py-2 px-4 rounded border border-[0.5px]" type="button">
+                 { isSignIn ? "Create Account" : "Sign In"}
             </button>
           
         </div>
