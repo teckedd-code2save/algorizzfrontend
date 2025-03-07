@@ -1,5 +1,5 @@
 # Serendepify-frontend
-Serendepify frontend is frontend project of the algorizz company website project
+Serendepify frontend is frontend project a full stack company website project powered by a nest js backend project
 
 ## Tools
 - Next js
