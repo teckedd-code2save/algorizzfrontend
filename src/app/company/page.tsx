@@ -18,6 +18,18 @@ type Person = {
   career?: Career[] // Simplified Career relation
 };
 
+type Career = {
+  id: string;
+  title: string;
+  company: string;
+  description: string;
+  location: string;
+  startDate: string;
+  endDate: string | null;
+  userId: string;
+  createdAt: string;
+  updatedAt: string;
+};
 
 
 async function fetchPeople() {
