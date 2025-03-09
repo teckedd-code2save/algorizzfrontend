@@ -4,7 +4,8 @@ import NavMain from "@/components/navs/nav-main";
 import BigHeader from "@/components/texts/big-header-text";
 import Link from "next/link";
 import SimpleError from "@/components/errors/simple-error-page";
-import { routes } from "@/lib/routes";
+import { apiBaseUrl, routes } from "@/lib/routes";
+import { sampleCareers } from "@/lib/data";
 
 
 type Career = {
@@ -20,11 +21,30 @@ type Career = {
   updatedAt: string;
 };
 
+// async function fetchCareers() {
+//   const res = await fetch(`${apiBaseUrl}/careers`);
+//   if (!res.ok) return null;
+//   return res.json();
+// }
+
 async function fetchCareers() {
-  const res = await fetch(`http://localhost:8000/algorizz/careers`);
-  if (!res.ok) return null;
-  return res.json();
-}
+  try {
+   const res = await fetch(`${apiBaseUrl}/careers`, {
+     cache: 'no-store', // Ensure fresh data
+   });
+
+   if (!res.ok) {
+     return null;
+   }
+
+   return await res.json();
+ } catch (error) {
+   console.error(`failed:`, error);
+    return sampleCareers;
+   }
+ }
+
+
 
 export default async function Careers() {
 

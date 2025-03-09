@@ -15,3 +15,6 @@ export const routes = {
     "profile": "profile",
     "dashboard": "dashboard",
 }
+
+// read the api base url from the environment
+export const apiBaseUrl = process.env.API_BASE_URL || "http://localhost:8000";

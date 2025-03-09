@@ -3,7 +3,7 @@ import ProductCardTextOverlay from "@/components/cards/product-card-textoverlay"
 import NavMain from "@/components/navs/nav-main";
 import Link from "next/link";
 import SimpleError from "@/components/errors/simple-error-page";
-import { routes } from "@/lib/routes";
+import { apiBaseUrl, routes } from "@/lib/routes";
 
 
 type Product = {
@@ -29,7 +29,7 @@ enum Domain {
 
 export default async function Products() {
   // Fetch data from your NestJS backend
-  const res = await fetch("http://localhost:8000/algorizz/products");
+  const res = await fetch(`${apiBaseUrl}/products`);
   if (!res.ok) {
 
     return <SimpleError page="Products"></SimpleError>;
@@ -40,8 +40,7 @@ export default async function Products() {
   return (
     <div className="h-screen  w-screen text-white ">
         
-        {(() => {                    
-                   
+        {(() => {                                     
 
                     const subnav = (
                       <div className="flex space-x-4 mx-auto font-medium text-gray-100">

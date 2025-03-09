@@ -8,7 +8,7 @@ import { useState } from "react";
 import { FaGoogle,FaKey } from "react-icons/fa";
 import { Suspense } from 'react';
 
-export default function Contact() {
+export default function Login() {
   const [isSignIn, setIsSignIn] = useState(true); // true for Sign In, false for Sign Up
   const [isSignupComplete, setIsSignupComplete] = useState(false); // Tracks signup completion
 

@@ -27,7 +27,7 @@ export default function Home() {
                     );
 
                     const trailing = (
-                      <Link className="" href="/contact">
+                      <Link className="" href={routes.login}>
                         <VscAccount className="text-2xl"></VscAccount>
                       </Link>
                       

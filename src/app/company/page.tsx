@@ -3,7 +3,7 @@ import SimpleError from "@/components/errors/simple-error-page";
 import NavMain from "@/components/navs/nav-main";
 import BigHeader from "@/components/texts/big-header-text";
 import Link from "next/link";
-import { routes } from "@/lib/routes";
+import { apiBaseUrl, routes } from "@/lib/routes";
 
 
 // Define the Person type based on your User entity
@@ -49,7 +49,7 @@ function PersonCard({ person, className = "", iconStyle = "" }: { person: Person
 // Server-side fetch in an async component
 export default async function Company() {
   // Fetch team members from the NestJS backend
-  const res = await fetch("http://localhost:8000/algorizz/people", {
+  const res = await fetch(`${apiBaseUrl}/people`, {
     cache: "no-store", // Ensures fresh data; adjust as needed
   });
   if (!res.ok) {
