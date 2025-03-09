@@ -27,9 +27,26 @@ enum Domain {
   Education
 }
 
+async function fetchProducts() {
+  try {
+   const res = await fetch(`${apiBaseUrl}/products`, {
+     cache: 'no-store', // Ensure fresh data
+   });
+
+   if (!res.ok) {
+     return null;
+   }
+
+   return await res.json();
+ } catch (error) {
+   console.error(`failed:`, error);
+    return null;
+   }
+ }
+
 export default async function Products() {
   // Fetch data from your NestJS backend
-  const res = await fetch(`${apiBaseUrl}/products`);
+  const res = await fetchProducts();
   if (!res.ok) {
 
     return <SimpleError page="Products"></SimpleError>;

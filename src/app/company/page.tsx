@@ -34,7 +34,7 @@ type Career = {
 
 async function fetchPeople() {
   try {
-   const res = await fetch(`${apiBaseUrl}/careers`, {
+   const res = await fetch(`${apiBaseUrl}/people`, {
      cache: 'no-store', // Ensure fresh data
    });
 
