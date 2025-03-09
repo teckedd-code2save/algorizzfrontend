@@ -47,7 +47,7 @@ async function fetchProducts() {
 export default async function Products() {
   // Fetch data from your NestJS backend
   const res = await fetchProducts();
-  if (!res.ok) {
+  if (res===null) {
 
     return <SimpleError page="Products"></SimpleError>;
   }
