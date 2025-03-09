@@ -18,18 +18,24 @@ type Person = {
   career?: Career[] // Simplified Career relation
 };
 
-type Career = {
-  id: string;
-  title: string;
-  company: string;
-  description: string;
-  location: string;
-  startDate: string;
-  endDate: string | null;
-  userId: string;
-  createdAt: string;
-  updatedAt: string;
-};
+
+
+async function fetchPeople() {
+  try {
+   const res = await fetch(`${apiBaseUrl}/careers`, {
+     cache: 'no-store', // Ensure fresh data
+   });
+
+   if (!res.ok) {
+     return null;
+   }
+
+   return await res.json();
+ } catch (error) {
+   console.error(`failed:`, error);
+    return null;
+   }
+ }
 
 // Reusable PersonCard component
 function PersonCard({ person, className = "", iconStyle = "" }: { person: Person; className?: string; iconStyle?: string }) {
@@ -49,9 +55,11 @@ function PersonCard({ person, className = "", iconStyle = "" }: { person: Person
 // Server-side fetch in an async component
 export default async function Company() {
   // Fetch team members from the NestJS backend
-  const res = await fetch(`${apiBaseUrl}/people`, {
-    cache: "no-store", // Ensures fresh data; adjust as needed
-  });
+  const res = await fetchPeople();
+    if (res === null) {
+      return <SimpleError page="People"></SimpleError>;
+    }
+
   if (!res.ok) {
     return <SimpleError page="Company"></SimpleError>;
   }
