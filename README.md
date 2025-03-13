@@ -11,3 +11,6 @@ Serendepify frontend is frontend project a full stack company website project po
 - start in dev mode by running `npm run dev`
 
 
+## Hosting
+
+- AWS Amplify

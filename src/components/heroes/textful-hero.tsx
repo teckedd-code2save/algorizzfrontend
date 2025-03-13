@@ -2,35 +2,40 @@
 import AnimatedText from "../buttons/animated-text-btn";
 import RotatingHeroText from "../animations/rotating-hero-text";
 import Scroll from "../scrollable/Scroll";
-import PartnersMarquee from "../animations/marquee-display";
-import Image from "next/image";
-import AlgorizzLogo from "../svgs/algorizz-logo";
-
-
+import { initThreeScene } from "../../lib/threed";
+import { useEffect, useRef } from "react";
 
 export default function TextFulHeroScreen() {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (canvas) {
+            const cleanUp = initThreeScene(canvas);
+            return () => cleanUp();
+        }
+    },
+    [canvasRef]);
+    
     return ( 
 
         <div className="hero flex flex-col h-screen items-center justify-center p-6 text-center relative">
         {/* Grid of Images */}
           
-        {/* Add logo using algorizz-logo.svg */}
-         <div className="relative w-2/3 self-center">
-         <AlgorizzLogo></AlgorizzLogo>
-         {/* <Image src="/images/algorizz-logo.svg" fill  alt="Algorizz Logo" /> */}
-         </div>
+       {/* Canvas for Three.js */}
+         <canvas className="webgl absolute inset-0" ref={canvasRef} />
         
         {/* Content */}
-            <div className="relative  text-center flex flex-col gap-y-16 justify-between">
+            <div className="relative  h-full text-center flex flex-col gap-y-16 justify-end">
                 <div>
                 <div className="flex flex-row justify-start items-center gap-5">
                 {/* <h1 className="text-4xl font-bold flex-none bg-gradient-to-r from-[#5754AD] to-white bg-clip-text text-transparent">
                     Powering Futures
                 </h1> */}
-                <span className="grow"> 
+                {/* <span className="grow"> 
                     <RotatingHeroText className="text-4xl" messages={["DevOps Solutions", "Custom AI Solutions", "Business Software Solutions"]}>
                     </RotatingHeroText>
-                </span>
+                </span> */}
+
                 </div>
                     
                   
