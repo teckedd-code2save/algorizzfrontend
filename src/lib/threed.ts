@@ -2,7 +2,7 @@
 "use client"; // Client-side only
 
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js"; // Updated import
 
 export function initThreeScene(canvas: HTMLCanvasElement): () => void {
   // Scene
@@ -22,7 +22,7 @@ export function initThreeScene(canvas: HTMLCanvasElement): () => void {
 
   // Light
   const pointLight = new THREE.PointLight(0xffffff, 5, 150);
-  pointLight.position.set(1, 6, -5);
+  pointLight.position.set(1, 6, 6);
   scene.add(pointLight);
 
   // Camera
@@ -39,7 +39,7 @@ export function initThreeScene(canvas: HTMLCanvasElement): () => void {
   const renderer = new THREE.WebGLRenderer({ canvas });
   renderer.setSize(sizes.width, sizes.height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setClearColor(0x1a1a1a, 1);
+  renderer.setClearColor('#1E1E1E', 1);
 
   // Controls
   const controls = new OrbitControls(camera, canvas);
